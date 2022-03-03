@@ -5,7 +5,7 @@ require('dotenv').config()
 const request = require('supertest');
 const server = require("../server/app");
 const { expect } = require('chai');
-const seed = require('./seed');
+//const seed = require('./seed');
 const log = require('loglevel');
 const sinon = require("sinon");
 
@@ -15,8 +15,8 @@ describe('microservice integration tests', () => {
     //In case other sinon stub would affect me 
     sinon.restore();
     //before all, seed data to DB
-    await seed.clear();
-    await seed.seed();
+  //  await seed.clear();
+   // await seed.seed();
 
     // do any other setup here
     // including authorize to the service if required

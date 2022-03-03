@@ -1,1 +1,1 @@
-SCHEMA={SCHEMA}
+SCHEMA=query
