@@ -1,10 +1,11 @@
-const BaseRepository = require("./BaseRepository");
 const {expect} = require("chai");
-const knex = require("../database/knex");
 const mockKnex = require("mock-knex");
+const log = require("loglevel")
+
 const tracker = mockKnex.getTracker();
-const jestExpect = require("expect");
+const knex = require("../database/knex");
 const Session = require("../models/Session");
+const BaseRepository = require("./BaseRepository");
 
 describe("BaseRepository", () => {
   let baseRepository;
@@ -32,7 +33,7 @@ describe("BaseRepository", () => {
     expect(entity).property("id").eq(1);
   });
 
-  //TODO
+  // TODO
   it.skip("getById can not find result, should throw 404", () => {
   });
 
@@ -134,7 +135,7 @@ describe("BaseRepository", () => {
         tracker.uninstall();
         tracker.install();
         tracker.on("query", (query) => {
-          console.log("sql:",query.sql);
+          log.debug("sql:",query.sql);
           expect(query.sql).match(/select.*testTable.*where.*c1.*=.*or.*c2.*=.*or.*c3.*and.*c4.*/);
           query.response([{id:1}]);
         });
@@ -159,7 +160,7 @@ describe("BaseRepository", () => {
         tracker.uninstall();
         tracker.install();
         tracker.on("query", (query) => {
-          console.log("sql:",query.sql);
+          log.debug("sql:",query.sql);
           expect(query.sql).match(/select.*testTable.*where.*c3.*=.*and.*c4.*=.*or.*c3.*and.*c4.*/);
           query.response([{id:1}]);
         });
@@ -235,7 +236,7 @@ describe("BaseRepository", () => {
       expect(result).eq(1);
     });
 
-    //TODO
+    // TODO
     describe.skip("count support and and or", () => {
     });
   });

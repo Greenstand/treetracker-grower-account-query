@@ -1,13 +1,12 @@
 require('dotenv').config();
 const chai = require('chai');
-const request = require('./lib/supertest');
 const { v4: uuid } = require('uuid');
+const request = require('./lib/supertest');
 
-const { expect } = chai;
+// const { expect } = chai;
 chai.use(require('chai-like'));
 chai.use(require('chai-things'));
 const server = require('../server/app');
-const knex = require('../server/database/knex');
 
 // Global Seed
 // const databaseCleaner = require('../database/seeds/00_job_database_cleaner');
@@ -19,7 +18,7 @@ describe('Query API tests.', () => {
 
   describe('Grower Account GET', () => {
     it(`Should call GET successfully with organization_id`, async () => {
-      const res = await request(server)
+      const _res = await request(server)
         .get(`/grower_accounts`)
         .query({
           organization_id: uuid()
@@ -29,7 +28,7 @@ describe('Query API tests.', () => {
     });
 
     it(`Should call GET successfully with region_id`, async () => {
-      const res = await request(server)
+      const _res = await request(server)
         .get(`/grower_accounts`)
         .query({
           region_id: uuid()
@@ -39,7 +38,7 @@ describe('Query API tests.', () => {
     });
 
     it(`Should call GET successfully with organization_id and region_id`, async () => {
-      const res = await request(server)
+      const _res = await request(server)
         .get(`/grower_accounts`)
         .query({
           organization_id: uuid(),

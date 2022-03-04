@@ -1,6 +1,5 @@
-const GrowerAccountRepository = require('../repositories/GrowerAccountQueryRepository');
-const HttpError = require('../utils/HttpError');
 const log = require("loglevel");
+const GrowerAccountRepository = require('../repositories/GrowerAccountQueryRepository');
 
 const GrowerAccount = ({ id, handle }) =>
   Object.freeze({

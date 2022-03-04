@@ -1,13 +1,9 @@
 const express = require('express');
-const Sentry = require('@sentry/node');
 const bodyParser = require('body-parser');
-const asyncHandler = require('express-async-handler');
-const { check, validationResult } = require('express-validator');
-const { body } = require('express-validator');
+// const log = require("loglevel");
 const HttpError = require("./utils/HttpError");
-const router = require("./routes.js");
+const router = require("./routes");
 const {errorHandler} = require("./utils/utils");
-const log = require("loglevel");
 const helper = require("./utils/utils");
 
 const app = express();
@@ -32,7 +28,8 @@ app.use('/', router);
 // Global error handler
 app.use(errorHandler);
 
-const version = require('../package.json').version
+const {version} = require('../package.json')
+
 app.get('*',function (req, res) {
   res.status(200).send(version)
 });

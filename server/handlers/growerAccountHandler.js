@@ -5,8 +5,6 @@ const {
   getGrowerAccounts
 } = require('../services/GrowerAccountService');
 
-const HttpError = require('../utils/HttpError');
-
 const getGrowerAccountsQuerySchema = Joi.alternatives().try(
     Joi.object({
       organization_id : Joi.string().uuid(),

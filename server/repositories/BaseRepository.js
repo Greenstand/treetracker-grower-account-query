@@ -1,4 +1,3 @@
-const Session = require("../models/Session");
 const expect = require("expect-runtime");
 const HttpError = require("../utils/HttpError");
 
@@ -24,38 +23,49 @@ class BaseRepository{
    * options:
    *  limit: number
    */
-  async getByFilter(filter, options){
-    const whereBuilder = function(object, builder){
+  async getByFilter(filter, options) {
+    const whereBuilder = function (object, builder) {
       let result = builder;
-      if(object['and']){
+      if (object.and) {
         expect(Object.keys(object)).lengthOf(1);
-        expect(object['and']).a(expect.any(Array));
-        for(let one of object['and']){
-          if(one['or']){
-            result = result.andWhere(subBuilder => whereBuilder(one, subBuilder));
-          }else{
+        expect(object.and).a(expect.any(Array));
+        object.and.forEach( one => {
+          if (one.or) {
+            result = result.andWhere((subBuilder) =>
+              whereBuilder(one, subBuilder),
+            );
+          } else {
             expect(Object.keys(one)).lengthOf(1);
-            result = result.andWhere(Object.keys(one)[0], Object.values(one)[0]);
+            result = result.andWhere(
+              Object.keys(one)[0],
+              Object.values(one)[0],
+            );
           }
-        }
-      }else if(object['or']){
+        });
+      } else if (object.or) {
         expect(Object.keys(object)).lengthOf(1);
-        expect(object['or']).a(expect.any(Array));
-        for(let one of object['or']){
-          if(one['and']){
-            result = result.orWhere(subBuilder => whereBuilder(one, subBuilder));
-          }else{
+        expect(object.or).a(expect.any(Array));
+        object.or.forEach( one => {
+          if (one.and) {
+            result = result.orWhere((subBuilder) =>
+              whereBuilder(one, subBuilder),
+            );
+          } else {
             expect(Object.keys(one)).lengthOf(1);
             result = result.orWhere(Object.keys(one)[0], Object.values(one)[0]);
           }
-        }
-      }else{
+        });
+      } else {
         result.where(object);
       }
       return result;
-    }
-    let promise = this._session.getDB().select().table(this._tableName).where(builder => whereBuilder(filter, builder));
-    if(options && options.limit){
+    };
+    let promise = this._session
+      .getDB()
+      .select()
+      .table(this._tableName)
+      .where((builder) => whereBuilder(filter, builder));
+    if (options && options.limit) {
       promise = promise.limit(options && options.limit);
     }
     const result = await promise;

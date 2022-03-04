@@ -2,9 +2,8 @@
  * Some utils for router/express
  */
 const log = require("loglevel");
-const HttpError = require("../utils/HttpError");
 const {ValidationError} = require("joi");
-const Session = require("../models/Session");
+const HttpError = require("./HttpError");
 
 /*
  * This is from the library https://github.com/Abazhenov/express-async-handler
@@ -30,7 +29,7 @@ exports.handlerWrapper = fn =>
     })
   }
 
-exports.errorHandler = (err, req, res, next) => {
+exports.errorHandler = (err, req, res, _next) => {
   log.error("catch error:", err);
   if(err instanceof HttpError){
     res.status(err.code).send({

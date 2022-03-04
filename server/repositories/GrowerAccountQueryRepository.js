@@ -1,6 +1,3 @@
-const Session = require("../models/Session");
-const expect = require("expect-runtime");
-const HttpError = require("../utils/HttpError");
 const log = require("loglevel");
 
 class GrowerAccountQueryRepository{
@@ -22,7 +19,7 @@ class GrowerAccountQueryRepository{
    */
   async  getByFilter(filter, options){
     const whereBuilder = function(object, builder){
-      let result = builder;
+      const result = builder;
       
       if(object.region_id){
         log.debug('skippin region table')
@@ -39,7 +36,6 @@ class GrowerAccountQueryRepository{
       promise = promise.limit(options && options.limit);
     }
     const result = await promise;
-    expect(result).a(expect.any(Array));
     return result;
   }
 
@@ -66,9 +62,6 @@ class GrowerAccountQueryRepository{
 
   async countByFilter(filter){
     const result = await this.joinedTables().where(filter);
-    expect(result).match([{
-      count: expect.any(String),
-    }]);
     return parseInt(result[0].count);
   }
 
