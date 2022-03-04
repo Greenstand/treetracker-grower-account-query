@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: SERVICE
+  name: treetracker-grower-account-query
   labels:
-    app: SERVICE 
+    app: treetracker-grower-account-query 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: SERVICE
+      app: treetracker-grower-account-query
   template:
     metadata:
       labels:
-        app: SERVICE
+        app: treetracker-grower-account-query
     spec:
       affinity:
         nodeAffinity:
@@ -24,8 +24,8 @@ spec:
                 values:
                 - microservices-node-pool
       containers:
-      - name: SERVICE
-        image: greenstand/SERVICE:TAG
+      - name: treetracker-grower-account-query
+        image: greenstand/treetracker-grower-account-query:TAG
         ports:
         - containerPort: 80
         env:
@@ -35,6 +35,6 @@ spec:
                 name: database-connection
                 key: db
           - name: DATABASE_SCHEMA
-            value: messaging
+            value: query
       imagePullSecrets:
         - name: greenstand-docker-secret
