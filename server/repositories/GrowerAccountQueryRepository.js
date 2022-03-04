@@ -48,8 +48,17 @@ class GrowerAccountQueryRepository{
     log.debug(this._session);
     return this._session.getDB()
       .table(this._growerAccountTable)
-      .select([`${this._growerAccountTable}.*`, 
-               `${this._stakeholderTable}.id as organization_id`
+      .select([
+               `${this._authorTable}.handle`, 
+               `${this._growerAccountTable}.wallet`, 
+               `${this._growerAccountTable}.first_name`, 
+               `${this._growerAccountTable}.last_name`, 
+               `${this._growerAccountTable}.image_url`, 
+               `${this._growerAccountTable}.image_rotation`, 
+               `${this._growerAccountTable}.first_registration_at`, 
+               `${this._growerAccountTable}.organization_id`, 
+               `${this._growerAccountTable}.person_id`, 
+              //  `${this._stakeholderTable}.id as organization_id`
               ])
       .leftJoin(this._authorTable, `${this._authorTable}.handle`, `${this._growerAccountTable}.wallet`)
       .leftJoin(this._stakeholderTable, `${this._stakeholderTable}.id`, `${this._growerAccountTable}.organization_id`)

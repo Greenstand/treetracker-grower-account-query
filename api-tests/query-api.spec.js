@@ -20,7 +20,7 @@ describe('Query API tests.', () => {
   describe('Grower Account GET', () => {
     it(`Should call GET successfully with organization_id`, async () => {
       const res = await request(server)
-        .get(`/grower_account`)
+        .get(`/grower_accounts`)
         .query({
           organization_id: uuid()
          })
@@ -30,7 +30,7 @@ describe('Query API tests.', () => {
 
     it(`Should call GET successfully with region_id`, async () => {
       const res = await request(server)
-        .get(`/grower_account`)
+        .get(`/grower_accounts`)
         .query({
           region_id: uuid()
          })
@@ -40,7 +40,7 @@ describe('Query API tests.', () => {
 
     it(`Should call GET successfully with organization_id and region_id`, async () => {
       const res = await request(server)
-        .get(`/grower_account`)
+        .get(`/grower_accounts`)
         .query({
           organization_id: uuid(),
           region_id: uuid()

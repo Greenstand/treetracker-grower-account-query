@@ -6,6 +6,6 @@ const {
   growerAccountsGet,
 } = require('./handlers/growerAccountHandler');
 
-router.get('/grower_account', handlerWrapper(growerAccountsGet));
+router.get('/grower_accounts', handlerWrapper(growerAccountsGet));
 
 module.exports = router;

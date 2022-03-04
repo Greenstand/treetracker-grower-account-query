@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  title: INCOMPLETE treetracker api example
+  contact: {}
+  version: '0.1'
+paths:
+  /grower_accounts:
+    get:
+      tags:
+        - Domain entity
+      summary: Get all instanaces of a domain entity with some filters
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: organization_id
+          description: stakeholder uuid from stakeholder schema
+        - schema:
+            type: string
+          in: query
+          name: region_id
+          description: region id from regions schems
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/walletsResponse'
+        '':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  handle:
+                    type: string
+                  wallet:
+                    type: string
+                  organization_id:
+                    type: string
+                  person_id:
+                    type: string
+                  first_name:
+                    type: string
+                  last_name:
+                    type: string
+                  image_url:
+                    type: string
+                  image_rotation:
+                    type: string
+                  first_registered_at:
+                    type: string
+                    format: ISO8601
+      deprecated: false
+    post:
+      tags:
+        - Managed wallets
+      summary: Create a new managed wallet
+      description: Create a new managed wallet.  Requires the manage_account role.
+      parameters:
+        - $ref: '#/components/parameters/treetrackerApiKeyParam'
+        - $ref: '#/components/parameters/contentTypeJsonHeader'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/accountrequest'
+            example:
+              wallet: sprinter_van_2004
+        required: true
+      responses:
+        '201':
+          description: A new wallet was created
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+      deprecated: false
+    parameters: []
+security:
+  - httpBearer: []
