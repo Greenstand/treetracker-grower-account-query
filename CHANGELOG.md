@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.0...v1.0.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* update namespace ([626838d](https://github.com/Greenstand/treetracker-grower-account-query/commit/626838dfc5a2c1ecf9c89df6c7ef5fb66f8f6c8b))
+
 # 1.0.0 (2022-03-04)
 
 
