@@ -1,11 +1,13 @@
 const Session = require("../models/Session");
 const expect = require("expect-runtime");
 const HttpError = require("../utils/HttpError");
+const log = require("loglevel");
 
 class GrowerAccountQueryRepository{
 
-  constructor(tableName, session){
-    expect(tableName).defined();
+  constructor(session){
+    log.debug("constructor");
+    log.debug(session);
     this._session = session;
     this._growerAccountTable = 'treetracker.grower_account';
     this._authorTable = 'messaging.author';
@@ -18,34 +20,18 @@ class GrowerAccountQueryRepository{
    * options:
    *  limit: number
    */
-  async getByFilter(filter, options){
+  async  getByFilter(filter, options){
     const whereBuilder = function(object, builder){
       let result = builder;
-      if(object['and']){
-        expect(Object.keys(object)).lengthOf(1);
-        expect(object['and']).a(expect.any(Array));
-        for(let one of object['and']){
-          if(one['or']){
-            result = result.andWhere(subBuilder => whereBuilder(one, subBuilder));
-          }else{
-            expect(Object.keys(one)).lengthOf(1);
-            result = result.andWhere(Object.keys(one)[0], Object.values(one)[0]);
-          }
-        }
-      }else if(object['or']){
-        expect(Object.keys(object)).lengthOf(1);
-        expect(object['or']).a(expect.any(Array));
-        for(let one of object['or']){
-          if(one['and']){
-            result = result.orWhere(subBuilder => whereBuilder(one, subBuilder));
-          }else{
-            expect(Object.keys(one)).lengthOf(1);
-            result = result.orWhere(Object.keys(one)[0], Object.values(one)[0]);
-          }
-        }
-      }else{
-        result.where(object);
+      
+      if(object.region_id){
+        log.debug('skippin region table')
+        // result.where('regions.region.id', object.region_id)        
       }
+      if(object.organization_id){
+        result.where('stakeholder.stakeholder.id', object.organization_id)
+      }
+      
       return result;
     }
     let promise = this.joinedTables().where(builder => whereBuilder(filter, builder));
@@ -58,9 +44,13 @@ class GrowerAccountQueryRepository{
   }
 
   joinedTables(){
-    return this._session.getDb()
+    log.debug("joinedTables");
+    log.debug(this._session);
+    return this._session.getDB()
       .table(this._growerAccountTable)
-      .select(`${this._growerAccountTable}.*`)
+      .select([`${this._growerAccountTable}.*`, 
+               `${this._stakeholderTable}.id as organization_id`
+              ])
       .leftJoin(this._authorTable, `${this._authorTable}.handle`, `${this._growerAccountTable}.wallet`)
       .leftJoin(this._stakeholderTable, `${this._stakeholderTable}.id`, `${this._growerAccountTable}.organization_id`)
   }

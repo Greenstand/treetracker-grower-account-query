@@ -2,6 +2,7 @@ const expect = require('expect-runtime');
 const log = require("loglevel");
 
 const connection = process.env.DATABASE_URL;
+console.log(connection);
 expect(connection).to.match(/^postgresql:\//);
 
 let knexConfig = {

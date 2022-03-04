@@ -24,11 +24,8 @@ const growerAccountsGet = async (req, res, _next) => {
     await getGrowerAccountsQuerySchema.validateAsync(req.params, {
       abortEarly: false,
     });
-    const growerAccounts = await getGrowerAccounts({
-      organization_id: req.params.organization_id,
-      region_id: req.params.region_id 
-    });
-    res.send(messages[0]);
+    const growerAccounts = await getGrowerAccounts(req.query);
+    res.send(growerAccounts);
     res.end();
   } catch (e) {
     log.error(e);
