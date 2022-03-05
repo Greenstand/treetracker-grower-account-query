@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.1...v1.0.2) (2022-03-05)
+
+
+### Bug Fixes
+
+* include service ([fbb3283](https://github.com/Greenstand/treetracker-grower-account-query/commit/fbb3283304db3b90df3094f6402a27ef6e6c9449))
+
 ## [1.0.1](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.0...v1.0.1) (2022-03-04)
 
 
