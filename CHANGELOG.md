@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.2...v1.0.3) (2022-03-05)
+
+
+### Bug Fixes
+
+* do not use migration job ([020dcb1](https://github.com/Greenstand/treetracker-grower-account-query/commit/020dcb19d8b3fcb47f0b0bcc3165fe4ea29e192f))
+
 ## [1.0.2](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.1...v1.0.2) (2022-03-05)
 
 
