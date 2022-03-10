@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.3...v1.0.4) (2022-03-10)
+
+
+### Bug Fixes
+
+* loglevel setup ([7aececf](https://github.com/Greenstand/treetracker-grower-account-query/commit/7aececf959bbf2dbe49825c1be96f1698f240869))
+
 ## [1.0.3](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.2...v1.0.3) (2022-03-05)
 
 
