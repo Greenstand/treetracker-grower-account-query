@@ -2,20 +2,20 @@ const log = require('loglevel');
 const Joi = require('joi');
 
 const {
-  getGrowerAccounts
+  getGrowerAccounts,
+  getGrowerAccountsCount,
 } = require('../services/GrowerAccountService');
 
 const getGrowerAccountsQuerySchema = Joi.alternatives().try(
-    Joi.object({
-      organization_id : Joi.string().uuid(),
-      region_id: Joi.string().uuid().allow(null)
-    }),
-    Joi.object({
-      organization_id: Joi.string().uuid().allow(null),
-      region_id: Joi.string().uuid()
-    })
-  );
-
+  Joi.object({
+    organization_id: Joi.string().uuid(),
+    region_id: Joi.string().uuid().allow(null),
+  }),
+  Joi.object({
+    organization_id: Joi.string().uuid().allow(null),
+    region_id: Joi.string().uuid(),
+  }),
+);
 
 const growerAccountsGet = async (req, res, _next) => {
   try {
@@ -23,7 +23,8 @@ const growerAccountsGet = async (req, res, _next) => {
       abortEarly: false,
     });
     const growerAccounts = await getGrowerAccounts(req.query);
-    res.send(growerAccounts);
+    const growerAccountsCount = await getGrowerAccountsCount(req.query);
+    res.send({ growerAccounts: growerAccounts, count: growerAccountsCount });
     res.end();
   } catch (e) {
     log.error(e);
@@ -32,5 +33,5 @@ const growerAccountsGet = async (req, res, _next) => {
 };
 
 module.exports = {
-  growerAccountsGet
+  growerAccountsGet,
 };
