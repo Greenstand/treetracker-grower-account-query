@@ -7,10 +7,12 @@ const {
 
 const getGrowerAccountsQuerySchema = Joi.alternatives().try(
     Joi.object({
+      author: Joi.bool(),
       organization_id : Joi.string().uuid(),
       region_id: Joi.string().uuid().allow(null)
     }),
     Joi.object({
+      author: Joi.bool(),
       organization_id: Joi.string().uuid().allow(null),
       region_id: Joi.string().uuid()
     })

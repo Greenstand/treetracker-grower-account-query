@@ -28,6 +28,10 @@ class GrowerAccountQueryRepository{
       if(object.organization_id){
         result.where('stakeholder.stakeholder.id', object.organization_id)
       }
+
+      if(object.author == true){
+        result.whereNotNull('author.handle')
+      }
       
       return result;
     }

@@ -47,6 +47,17 @@ describe('Query API tests.', () => {
         .set('Accept', 'application/json')
         .expect(200);
     });
+
+
+    it(`Should call GET successfully with author=true`, async () => {
+      const _res = await request(server)
+        .get(`/grower_accounts`)
+        .query({
+          author: true
+         })
+        .set('Accept', 'application/json')
+        .expect(200);
+    });
   });
 
 });
