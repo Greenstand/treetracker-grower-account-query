@@ -1,10 +1,28 @@
 const log = require("loglevel");
 const GrowerAccountRepository = require('../repositories/GrowerAccountQueryRepository');
 
-const GrowerAccount = ({ id, handle }) =>
+const GrowerAccount = (
+  {
+    id,
+    handle,
+    first_name,
+    last_name,
+    image_url,
+    image_rotation,
+    first_registration_at,
+    organization_id,
+    person_id
+  }) =>
   Object.freeze({
     id,
     handle,
+    first_name,
+    last_name,
+    image_url,
+    image_rotation,
+    first_registration_at,
+    organization_id,
+    person_id
   });
 
 const getGrowerAccounts = async (session, filterCriteria = undefined) => {
