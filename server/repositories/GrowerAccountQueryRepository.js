@@ -29,6 +29,9 @@ class GrowerAccountQueryRepository {
         );
       });
     }
+    if (object.author === 'true') {
+      result.whereNotNull('author.handle');
+    }
 
     return result;
   }

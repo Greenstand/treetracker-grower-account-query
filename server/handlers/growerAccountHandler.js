@@ -6,20 +6,24 @@ const {
   getGrowerAccountsCount,
 } = require('../services/GrowerAccountService');
 
-const getGrowerAccountsQuerySchema = Joi.alternatives().try(
-  Joi.object({
-    organization_id: Joi.string().uuid(),
-    region_id: Joi.string().uuid().allow(null),
-  }),
-  Joi.object({
-    organization_id: Joi.string().uuid().allow(null),
-    region_id: Joi.string().uuid(),
-  }),
-);
+const getGrowerAccountsQuerySchema = Joi.alternatives()
+  .try(
+    Joi.object({
+      author: Joi.bool(),
+      organization_id: Joi.string().uuid(),
+      region_id: Joi.string().uuid().allow(null),
+    }),
+    Joi.object({
+      author: Joi.bool(),
+      organization_id: Joi.string().uuid().allow(null),
+      region_id: Joi.string().uuid(),
+    }),
+  )
+  .required();
 
 const growerAccountsGet = async (req, res, _next) => {
   try {
-    await getGrowerAccountsQuerySchema.validateAsync(req.params, {
+    await getGrowerAccountsQuerySchema.validateAsync(req.query, {
       abortEarly: false,
     });
     const growerAccounts = await getGrowerAccounts(req.query);

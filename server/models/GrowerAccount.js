@@ -4,7 +4,6 @@ const GrowerAccountRepository = require('../repositories/GrowerAccountQueryRepos
 const GrowerAccount = ({
   id,
   handle,
-  wallet,
   first_name,
   last_name,
   image_url,
@@ -16,7 +15,6 @@ const GrowerAccount = ({
   Object.freeze({
     id,
     handle,
-    wallet,
     first_name,
     last_name,
     image_url,
