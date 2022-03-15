@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.1.0...v1.1.1) (2022-03-15)
+
+
+### Bug Fixes
+
+* send all grower account properites ([f5ca728](https://github.com/Greenstand/treetracker-grower-account-query/commit/f5ca72872f3a1f532ee6ab38584f3d1582228d54))
+
 # [1.1.0](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.4...v1.1.0) (2022-03-15)
 
 
