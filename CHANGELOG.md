@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.1.1...v1.2.0) (2022-03-15)
+
+
+### Bug Fixes
+
+* merge conflicts ([2f61eac](https://github.com/Greenstand/treetracker-grower-account-query/commit/2f61eac1f51f1323022aa70b308969ea6dcf747f))
+
+
+### Features
+
+* filter by organization_id to respect child orgs ([01b3f3a](https://github.com/Greenstand/treetracker-grower-account-query/commit/01b3f3ad5304f5ddb5099270736fc7e29d687ca2))
+
 ## [1.1.1](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.1.0...v1.1.1) (2022-03-15)
 
 
