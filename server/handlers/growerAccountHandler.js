@@ -16,12 +16,11 @@ const getGrowerAccountsQuerySchema = Joi.alternatives().try(
       organization_id: Joi.string().uuid().allow(null),
       region_id: Joi.string().uuid()
     })
-  );
-
+  ).required();
 
 const growerAccountsGet = async (req, res, _next) => {
   try {
-    await getGrowerAccountsQuerySchema.validateAsync(req.params, {
+    await getGrowerAccountsQuerySchema.validateAsync(req.query, {
       abortEarly: false,
     });
     const growerAccounts = await getGrowerAccounts(req.query);

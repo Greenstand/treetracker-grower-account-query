@@ -20,6 +20,7 @@ class GrowerAccountQueryRepository{
   async  getByFilter(filter, options){
     const whereBuilder = function(object, builder){
       const result = builder;
+      log.info(object)
       
       if(object.region_id){
         log.debug('skippin region table')
@@ -29,7 +30,7 @@ class GrowerAccountQueryRepository{
         result.where('stakeholder.stakeholder.id', object.organization_id)
       }
 
-      if(object.author == true){
+      if(object.author === 'true'){
         result.whereNotNull('author.handle')
       }
       
