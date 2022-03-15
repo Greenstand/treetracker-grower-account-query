@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.4...v1.1.0) (2022-03-15)
+
+
+### Features
+
+* add filter by author ([d1c9846](https://github.com/Greenstand/treetracker-grower-account-query/commit/d1c9846dab8ec8f9b11b6c5e77f2db354941b35b))
+* allow setting author=true to filter grower accounts enabled for messaging ([e0a1667](https://github.com/Greenstand/treetracker-grower-account-query/commit/e0a16677d7179e5df3a4cf514e41682a5b0da134))
+
 ## [1.0.4](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.0.3...v1.0.4) (2022-03-10)
 
 
