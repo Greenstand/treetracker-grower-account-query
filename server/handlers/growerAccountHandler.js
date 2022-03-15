@@ -28,7 +28,7 @@ const growerAccountsGet = async (req, res, _next) => {
     });
     const growerAccounts = await getGrowerAccounts(req.query);
     const growerAccountsCount = await getGrowerAccountsCount(req.query);
-    res.send({ growerAccounts: growerAccounts, count: growerAccountsCount });
+    res.send({ growerAccounts, count: growerAccountsCount });
     res.end();
   } catch (e) {
     log.error(e);

@@ -11,7 +11,7 @@ class GrowerAccountQueryRepository {
   }
 
   _whereBuilder(object, builder) {
-    let knex = this._session.getDB();
+    const knex = this._session.getDB();
     const result = builder;
 
     if (object.region_id) {
@@ -55,6 +55,7 @@ class GrowerAccountQueryRepository {
 
     return joinedTables;
   }
+
   /*
    * select by filter
    * support: and / or
