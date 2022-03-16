@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.1...v1.2.2) (2022-03-16)
+
+
+### Bug Fixes
+
+* add sealed secrets ([b7d191a](https://github.com/Greenstand/treetracker-grower-account-query/commit/b7d191a4b99261f1cc40113a81bbfeccf142afc1))
+
 ## [1.2.1](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.0...v1.2.1) (2022-03-16)
 
 
