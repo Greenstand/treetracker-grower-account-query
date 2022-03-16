@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.4...v1.2.5) (2022-03-16)
+
+
+### Bug Fixes
+
+* add region spatial query ([b972b9d](https://github.com/Greenstand/treetracker-grower-account-query/commit/b972b9dbb096a4e57581e4331c46a77a82a9b856))
+
 ## [1.2.4](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.3...v1.2.4) (2022-03-16)
 
 
