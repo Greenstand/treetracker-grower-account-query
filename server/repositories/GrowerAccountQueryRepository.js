@@ -8,6 +8,7 @@ class GrowerAccountQueryRepository {
     this._growerAccountTable = 'treetracker.grower_account';
     this._authorTable = 'messaging.author';
     this._stakeholderTable = 'stakeholder.stakeholder';
+    this._regionsTable = 'regions.region';
   }
 
   _whereBuilder(object, builder) {
@@ -15,12 +16,9 @@ class GrowerAccountQueryRepository {
     const result = builder;
 
     if (object.region_id) {
-      log.debug('skippin region table');
-      // result.where('regions.region.id', object.region_id)
+      result.where('regions.region.id', object.region_id);
     }
     if (object.organization_id) {
-      // [children] = query getChildren(object.organization_id)
-      // result.whereIn('grower_account.organization_id', [children])
       result.whereIn('grower_account.organization_id', function () {
         this.select('stakeholder_id').from(
           knex.raw(`stakeholder.getstakeholderchildren(?)`, [
@@ -36,7 +34,7 @@ class GrowerAccountQueryRepository {
     return result;
   }
 
-  _joinedTables() {
+  _joinedTables(region_id) {
     log.debug('joinedTables');
     log.debug(this._session);
     const joinedTables = this._session
@@ -53,6 +51,16 @@ class GrowerAccountQueryRepository {
         `${this._growerAccountTable}.organization_id`,
       );
 
+    if (region_id) {
+      joinedTables.join(
+        this._regionsTable,
+        this._session.getDB().raw(`ST_WITHIN(
+          ${this._growerAccountTable}.location,
+          ${this._regionsTable}.shape
+        )`),
+      );
+    }
+
     return joinedTables;
   }
 
@@ -63,7 +71,7 @@ class GrowerAccountQueryRepository {
    *  limit: number
    */
   async getByFilter(filter, options) {
-    let promise = this._joinedTables()
+    let promise = this._joinedTables(filter.region_id)
       .select([
         `${this._growerAccountTable}.id`,
         `${this._authorTable}.handle`,
@@ -75,7 +83,6 @@ class GrowerAccountQueryRepository {
         `${this._growerAccountTable}.first_registration_at`,
         `${this._growerAccountTable}.organization_id`,
         `${this._growerAccountTable}.person_id`,
-        //  `${this._stakeholderTable}.id as organization_id`
       ])
       .where((builder) => this._whereBuilder(filter, builder));
     if (options && options.limit) {
@@ -86,7 +93,7 @@ class GrowerAccountQueryRepository {
   }
 
   async countByFilter(filter) {
-    const result = await this._joinedTables()
+    const result = await this._joinedTables(filter.region_id)
       .count()
       .where((builder) => this._whereBuilder(filter, builder));
     return parseInt(result[0].count);
