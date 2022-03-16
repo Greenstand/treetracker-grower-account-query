@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.3...v1.2.4) (2022-03-16)
+
+
+### Bug Fixes
+
+* move prod to production ([621aa3d](https://github.com/Greenstand/treetracker-grower-account-query/commit/621aa3d0a04cfd8cde43d5a72bf42e143ef5ff71))
+
 ## [1.2.3](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.2...v1.2.3) (2022-03-16)
 
 
