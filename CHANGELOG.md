@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.0...v1.2.1) (2022-03-16)
+
+
+### Bug Fixes
+
+* snake case for api properties ([67082f4](https://github.com/Greenstand/treetracker-grower-account-query/commit/67082f4206f028004a55e2f75d4074be29581383))
+
 # [1.2.0](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.1.1...v1.2.0) (2022-03-15)
 
 
