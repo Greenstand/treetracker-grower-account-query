@@ -54,7 +54,7 @@ class GrowerAccountQueryRepository {
     if (region_id) {
       joinedTables.join(
         this._regionsTable,
-        this._session.getDB().raw(`ST_WITHIN(
+        this._session.getDB().raw(`public.ST_WITHIN(
           ${this._growerAccountTable}.location,
           ${this._regionsTable}.shape
         )`),
