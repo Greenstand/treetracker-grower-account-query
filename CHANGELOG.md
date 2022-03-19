@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.5...v1.2.6) (2022-03-19)
+
+
+### Bug Fixes
+
+* add schema name to function path ([c6d139c](https://github.com/Greenstand/treetracker-grower-account-query/commit/c6d139c6ecfe1ddf86ca60dae90a86d5a5e8f6f4))
+
 ## [1.2.5](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.4...v1.2.5) (2022-03-16)
 
 
