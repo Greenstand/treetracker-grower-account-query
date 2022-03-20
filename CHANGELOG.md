@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.6...v1.2.7) (2022-03-20)
+
+
+### Bug Fixes
+
+* cors for beta-admin ([65f2a1c](https://github.com/Greenstand/treetracker-grower-account-query/commit/65f2a1c1b052951d8cc7ce9caec118205c2b8374))
+
 ## [1.2.6](https://github.com/Greenstand/treetracker-grower-account-query/compare/v1.2.5...v1.2.6) (2022-03-19)
 
 
