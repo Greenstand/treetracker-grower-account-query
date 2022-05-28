@@ -36,3 +36,5 @@ spec:
                 key: db
           - name: DATABASE_SCHEMA
             value: query
+      imagePullSecrets:
+        - name: greenstand-docker-secret
